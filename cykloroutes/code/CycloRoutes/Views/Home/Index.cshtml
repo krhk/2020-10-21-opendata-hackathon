@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="ctr" class="text-center">
+    <h1>Počet uživatelů: @Model[1] </h1>
+    <h1>Počet recenzí: @Model[0] </h1>
+</div>
+<div style="height:600px" id="map">
+    <div class="leaflet-bottom leaflet-left">
+        <button style="pointer-events: auto" onclick="center()">Centrovat</button>
+    </div>
+</div>
+
+
+<script>
+    var mymap = L.map('map').setView([50.209742, 15.833431], 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: '',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1Ijoib2xkYmVhcjI0IiwiYSI6ImNrZ2phNjlqczB0a3MzM3FuN3lwYWJwa24ifQ.KuhNPT5XNs0yA3djony34Q'
+    }).addTo(mymap);
+
+    function style(feature) {
+        return {
+            color: '#0000ff',
+            weight: 2,
+            opacity: 1
+        };
+    }
+
+    var highlight = {
+        'color': '#ff0000',
+        'weight': 2,
+        'opacity': 1
+    }
+
+    function forEachFeature(feature, layer) {
+
+        var popupContent = "<p>ID: " + feature.properties.osm_id.toLocaleString() +
+            "</br>Jméno: " + feature.properties.name
+            + "</p>" + "</br><form action=\"Reviews/Create/"
+            + feature.properties.osm_id + "\"><input type=\"submit\" value=\"Napsat recenzi\"></form>"
+            + "</br><form action=\"Reviews/Filter/"
+            + feature.properties.osm_id + "\"><input type=\"submit\" value=\"Zobrazit recenze\"></form>";
+        layer.bindPopup(popupContent);
+
+        layer.on("click", function (e) {
+            cycloLayer.setStyle(style);
+            walkerLayer.setStyle(style);
+            unclass.setStyle(style);
+            layer.setStyle(highlight);
+        })
+    }
+
+    var cycloLayer = L.geoJSON(null, { onEachFeature: forEachFeature }).addTo(mymap);
+    jQuery.getJSON("cyklo.json", function (data) {
+        cycloLayer.addData(data);
+    });
+
+    var walkerLayer = L.geoJSON(null, { onEachFeature: forEachFeature }).addTo(mymap);
+    jQuery.getJSON("chodci.json", function (data) {
+        walkerLayer.addData(data);
+    });
+
+    var unclass = L.geoJSON(null, { onEachFeature: forEachFeature }).addTo(mymap);
+    jQuery.getJSON("unclassified.json", function (data) {
+        unclass.addData(data);
+    });
+
+    var Thunderforest_OpenCycleMap = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
+        attribution: '',
+        apikey: '324d2f5f075146b39e56c67a2388ebe2',
+        maxZoom: 22
+    });
+
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: ''
+    });
+
+    var baseMaps = {
+        "Open Street Map": mymap,
+        "Satelitní mapa": Esri_WorldImagery,
+        "Cyklo mapy": Thunderforest_OpenCycleMap
+    };
+    var overlayMaps = {
+        "Cyklostezky": cycloLayer,
+        "Pěší": walkerLayer,
+        "Neklasifikováno": unclass
+    };
+    function center() {
+        mymap.setView([50.209742, 15.833431], 13);
+    }
+    L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+
+
+</script>

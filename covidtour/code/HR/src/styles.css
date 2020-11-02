@@ -1,0 +1,25 @@
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+html, body { 
+    height: 100%;
+    margin: 0; 
+}
+body { 
+    background-color: #022231; 
+    font-family: sans-serif;
+    overscroll-behavior: contain;
+    --header: #022231;
+    --backgroundTop: #044360;
+    --backgroudBottom: #012B3F;
+    --backgroundWarn: #F44336;
+    /* --backgroundSec: #ebc000; */
+    --backgroundSec: #F49A0B;
+    --backgroundBackAlt: #039BE5;
+    /* --yLight: #f7b955; */
+    --yLight: #F4B400;
+ }
+
+ .gmnoprint{
+    right: x;
+    left: 0;
+ }

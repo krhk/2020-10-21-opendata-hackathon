@@ -1,0 +1,13 @@
+.auth{
+    display: flex;
+    justify-content: center;
+    background-color: $background-color;
+    margin-top: 96px;
+    &-content{
+        display: flex;
+        flex-flow: column;
+        width: 320px;
+        align-items: center;
+        justify-content: center;
+    }
+}

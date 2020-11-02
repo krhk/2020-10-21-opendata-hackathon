@@ -1,0 +1,291 @@
+.mapSideContaier {
+    display: flex;
+}
+.siderRoot {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 1.5rem 2rem;
+}
+.sideTitle{
+    display: flex;
+    align-items: center;
+}
+.sideTitle > h2{
+    font-size: 1.2rem;
+    font-weight: 100;
+    text-align: center;
+}
+.sideTitle > img {
+    height: 2rem;
+    margin-right: .7rem;
+}
+.cityList {
+    margin-top: 1.5rem;
+}
+.city {
+    padding: 1rem;
+    background: white;
+    color: black;
+    border-radius: .3rem;
+}
+.city > h2 {
+    margin: .5rem 0;
+    border-bottom: solid 2px var(--yLight);
+    width: fit-content;
+    padding: 0 .2rem;
+}
+.sideSearch {
+    margin-top: auto;
+}
+.sideSearch > div {
+    margin: 0 .5rem;
+}
+.sideSearchInputWraper {
+    position: relative;
+    margin-bottom: 1.2rem;
+}
+.sideSearchInputLabel {
+    color: #aaa;
+    font-size: 1.2rem;
+    padding: 3px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 0;
+    transition: 300ms ease all;
+  }
+.sideSearchInput {
+    color: var(--yLight);
+    font-size: 1.3rem;
+    padding: 0;
+    display: block;
+    border: none;
+    background: transparent;
+    border-bottom: solid 1px var(--yLight);
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.sideSearchInput:focus { 
+    outline: none;
+    /* padding: 7px; */
+ }
+.sideSearchInput:focus ~ label, .sideSearchInput:valid ~ label {
+    color: var(--yLight);
+    top: -1rem;
+    left: -5px;
+    font-size: 14px;
+}
+
+.map {
+    flex-grow: 10;
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+}
+
+
+.absoluteFooter {
+    display: none;
+    background: white;
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    /* padding: .5rem 1rem; */
+    border-radius: .6rem;
+    /* box-shadow: 2px 2px 5px 0px #555; */
+    box-shadow: 4px 4px 10px 0px #555;
+}
+.absoluteFooter > h2 {
+    color: var(--backgroudBottom);
+    border-bottom: 3px solid var(--backgroudBottom);
+    font-size: 1.4rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    /* width: fit-content; */
+    padding: .8rem 5rem;
+    background: var(--yLight);
+    width: 100%;
+    border-radius: .6rem .6rem 0 0;
+    box-sizing: border-box;
+    font-weight: 500;
+    margin: 0 auto;
+}
+.absoluteFooter > p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+.forwardButtonWraper {
+    display: flex;
+    justify-content: stretch;
+    padding: .5rem 1rem;
+}
+.forwardButton { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: var(--yLight);
+    margin-top: .5rem;
+    border-radius: .9rem;
+}
+.covidInfo {
+    display: flex;
+    justify-content: space-evenly;
+    margin: .8rem .3rem;
+}
+.covidInfo > p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1.3rem;
+}
+.covidInfo > p > span:not(.material-icons) {
+    color: #F44336;
+}
+.covidInfo > p > .material-icons {
+    margin-right: .5rem;
+}
+
+
+.container {
+    display: none;
+    box-sizing: border-box;
+    position: absolute;
+    margin: auto;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 300px;
+    height: 100px;
+}
+.container * {
+    box-sizing: border-box;
+}
+.container .search {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* left: 0; */
+    width: 80px;
+    height: 80px;
+    background: var(--yLight);
+    border-radius: 50%;
+    /* transition: all 1s; */
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 2px 0px var(--backgroudBottom);
+}
+.container .search:hover {
+    cursor: pointer;
+}
+.search > .material-icons {
+    font-size: 50px;
+    color: var(--backgroudBottom);
+}
+
+.container input {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* left: 0; */
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    background: var(--yLight);;
+    color: var(--header);
+    text-shadow: 0 0 10px var(--yLight);;
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+    /* box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2); */
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+}
+.container input:hover {
+    cursor: pointer;
+}
+.container input:focus {
+    width: 300px;
+    opacity: 1;
+    cursor: text;
+}
+.container input:focus ~ .search {
+    /* right: -250px; */
+    background: var(--backgroudBottom);
+    z-index: 6;
+    box-shadow: 3px 3px 2px 0px var(--yLight);
+}
+.container input:focus ~ .search > .material-icons {
+    color: var(--yLight);
+}
+.container input::placeholder {
+    color: var(--header);
+    opacity: 0.7;
+    font-weight: bolder;
+}
+.crossIcon {
+    display: none;
+}
+.container input:focus ~ .search > .searchIcon{
+    display: none;
+}
+.container input:focus ~ .search > .crossIcon{
+    display: block;
+}
+
+
+
+ @media only screen and (max-width: 700px) {
+    .absoluteFooter {
+        display: block;
+    }
+    .container {
+        display: block;
+    }
+    .siderRoot {
+        display: none;
+    }
+}
+
+
+
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.info > p {
+    font-size: 1.3rem;
+    color: #444;
+    margin: .5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+.info > p > span:not(.description) {
+    margin-left: 1rem;
+    margin-top: .2rem;
+}
+.info > p > .description {
+    font-size: .9rem;
+}
+
+.info > mat-divider {
+    width: 100%;
+}

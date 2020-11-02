@@ -1,0 +1,320 @@
+<!-- <div class="floatingSlpit">
+  <div class="floating">
+    <h2 class="floatingHeader">Position</h2>
+    <div class="info">
+      <p>
+        <span class="description">Obec:</span>
+        <span>
+          <span class="material-icons">business</span>
+          <span>{{Confinig.name}}</span>
+        </span>
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="description">Nakazeni:</span>
+        <span style="color: var(--backgroundWarn)">
+          <span class="material-icons">coronavirus</span>
+          <span>{{Confinig.curent}}</span>
+        </span>
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="description">Nakažení na 100:</span>
+        <span style="color: var(--backgroundWarn)">
+          <span class="material-icons">coronavirus</span>
+          <span>{{Confinig.curentPer}}%</span>
+        </span>
+      </p>
+    </div>
+  </div>
+  <div class="floating">
+    <h2 class="floatingHeader">Position</h2>
+    <div class="info">
+      <p>
+        <span class="description">Populace:</span>
+        <span>
+          <span class="material-icons">perm_identity</span>
+          <span>{{Confinig.population}}</span>
+        </span>
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="description">Nově nakažení</span>
+        <span style="color: var(--backgroundWarn)">
+          <span class="material-icons">addchart</span>
+          <span>+{{Confinig.increse}}</span>
+        </span>
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="description">R faktor:</span>
+        <span>
+          <span class="material-icons">
+            trending_up
+          </span>
+          <span>{{Confinig.multiplicationFactor}}</span>
+          <span class="material-icons" style="font-weight: bold; margin-left: 1rem;" [ngStyle]="{color: WarningColor}">
+            error_outline
+          </span>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="floatingSlpit">
+  <div class="floating">
+    <h2 class="floatingHeader">Graph</h2>
+    <div>
+      <div class="mainGraf" #grafMain></div>
+      <div class="legend">
+        <div>
+          <div class="legendColor" style="background: #F4B400"></div>
+          <span>Aktuální vývoj</span>
+        </div>
+        <div>
+          <div class="legendColor" style="background: #DB4437"></div>
+          <span>Pesimistická předpověď</span>
+        </div>
+        <div>
+          <div class="legendColor" style="background: #4285F4"></div>
+          <span>Optimistická předpověď</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <mat-toolbar>
+  <div>
+    <span class="material-icons">
+      android
+    </span>
+    <span>Ohryzecek</span>
+  </div>
+  <div>
+    <span (click)="search.focus()" class="material-icons" style="font-size: 2rem;">
+      search
+    </span>
+    <input #search class="input" type="text" autocomplete="off" placeholder="Location" [(ngModel)]="value">
+  </div>
+</mat-toolbar> -->
+<mat-toolbar>
+  <div (click)="redirectBack()" class="back">
+    <span class="material-icons">
+      arrow_back
+    </span>
+  </div>
+  <div>
+    <img src="assets/logo1.svg" alt="">
+    <span>Cestovatelův průvodce karanténou</span>
+  </div>
+  <!-- <div>
+    <span (click)="search.focus()" class="material-icons" style="font-size: 2rem;">
+      search
+    </span>
+    <input #search class="input" type="text" autocomplete="off" placeholder="Location" [(ngModel)]="value">
+  </div> -->
+</mat-toolbar>
+<div class="floatingSlpit floatingSlpitThirdA" style="grid-template-columns: 5fr 2fr;">
+  <div class="floating">
+    <div class="info">
+      <p>
+        <span class="description">Obec:</span>
+        <span>
+          <span class="material-icons">business</span>
+          <span>{{Confinig?.name}}</span>
+        </span>
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="description">Počet obyvatel:</span>
+        <span>
+          <span class="material-icons">perm_identity</span>
+          <span>{{Confinig?.population}}</span>
+        </span>
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="description">Nakažení na 100 obyvatel:</span>
+        <span style="color: var(--backgroundWarn)">
+          <span class="material-icons">coronavirus</span>
+          <span>{{Confinig?.p | number:'1.2-5'}}%</span>
+        </span>
+      </p>
+    </div>
+
+  </div>
+  <div class="floating">
+    <div style="margin: 0">
+      <div style="height: 100%; width: 100%; min-height: 200px;" #map></div>
+    </div>
+  </div>
+</div>
+<div class="floating">
+  <div class="infoBig">
+    <div>
+      <div>
+        <span class="material-icons">
+          trending_up
+        </span>
+        <span>{{Confinig?.r | number:'1.2-3'}}</span>
+      </div>
+      <!-- <span class="material-icons" style="font-weight: bold; margin-left: 1rem;" [ngStyle]="{color: WarningColor}">
+          error_outline
+        </span> -->
+      <span class="infoBigTitle">
+        Reprodukční číslo
+      </span>
+      <span class="moreInfo" (click)="openPopA()">
+        <span class="moreInfoText">Více informací</span>
+        <span class="material-icons">
+          info
+        </span>
+      </span>
+      <div *ngIf="ShowMoreInfoA">
+        <div class="moreInfoContent">
+          <h2>
+            <span>Reprodukční číslo</span>
+          </h2>
+          <p>
+            Číslo R - Reprodukční číslo u epidemií pomáhá odhadnout, jak se bude epidemie šířit. Čím vyšší je číslo R,
+            tím se nemoc rychleji šíří. Pokud je R menší než jedna, počet nakažených v populaci klesá. <strong>Hodnota
+              čísla R udává kolik lidí je nakažený schopný nakazit.</strong> Příklad první den máme 1 nakaženého a
+            reprodukční číslo je 1. Jak se tedy bude epidemie vyvijet: 1 2 4 8 16 32 64 ....
+          </p>
+          <span class=" closeButton material-icons" (click)="closePop()">
+            clear
+          </span>
+        </div>
+        <div class="moreInfoContentAbsoluteBackgroudn" (click)="closePop()"></div>
+      </div>
+    </div>
+    <div class="infoLine"></div>
+    <div>
+      <div>
+        <span class="material-icons" [ngStyle]="{color: WarningColor}">
+          warning
+        </span>
+        <span>{{Confinig?.cach | number:'1.2-3'}}%</span>
+      </div>
+      <span class="infoBigTitle">
+        Šance nakažení
+      </span>
+      <span class="moreInfo" (click)="openPopB()">
+        <span class="moreInfoText">Více informací</span>
+        <span class="material-icons">
+          info
+        </span>
+      </span>
+      <div *ngIf="ShowMoreInfoB">
+        <div class="moreInfoContent">
+          <h2>
+            <span>Šance na nakažení</span>
+          </h2>
+          <p>
+            Šance na nakažení - Touto hodnotou je myšlen procentuální odhad rizika nakažení v této oblasti.
+            <strong>To znamená jaké je riziko, že se zde nakazíte pokud sem budete cestovat.</strong>
+          </p>
+          <span class=" closeButton material-icons" (click)="closePop()">
+            clear
+          </span>
+        </div>
+        <div class="moreInfoContentAbsoluteBackgroudn" (click)="closePop()"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="floatingSlpitNoSpace floatingSlpitThirdB">
+  <div class="floating" style="background: var(--yLight)">
+    <!-- <h2 class="floatingHeader">Nakazeni</h2> -->
+    <div>
+      <div class="bigNumber">
+        <span class="bigPart">
+          <span class="material-icons">coronavirus</span>
+          <span>{{Confinig?.abs}}</span>
+        </span>
+        <span class="smallPart">Nakažení</span>
+      </div>
+    </div>
+  </div>
+  <div class="floating">
+    <div>
+      <p class="gragName">Nakažení</p>
+      <div class="mainGraf" #grafAbs></div>
+      <div class="legend">
+        <div>
+          <div class="legendColor" style="background: #F4B400"></div>
+          <span>Aktuální vývoj</span>
+        </div>
+        <div>
+          <div class="legendColor" style="background: #DB4437"></div>
+          <span>Pesimistická předpověď</span>
+        </div>
+        <div>
+          <div class="legendColor" style="background: #4285F4"></div>
+          <span>Optimistická předpověď</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="floatingSlpitNoSpace floatingSlpitThirdA">
+  <div class="floating">
+    <div>
+      <p class="gragName">Přírůstky</p>
+      <div class="mainGraf" #grafRel></div>
+      <div class="legend">
+        <div>
+          <div class="legendColor" style="background: #F4B400"></div>
+          <span>Aktuální vývoj</span>
+        </div>
+        <div>
+          <div class="legendColor" style="background: #DB4437"></div>
+          <span>Pesimistická předpověď</span>
+        </div>
+        <div>
+          <div class="legendColor" style="background: #4285F4"></div>
+          <span>Optimistická předpověď</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="floating" style="background: var(--yLight)">
+    <div>
+      <div class="bigNumber">
+        <span class="bigPart">
+          <span class="material-icons">addchart</span>
+          <span>{{Confinig?.rel}}</span>
+        </span>
+        <span class="smallPart">Přírůstky</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footerContent">
+    <h2>Cestovatelův průvodce karanténou</h2>
+    <div>
+      <p>Verze: 1.0.0</p>
+      <p>Kontaktní emaily: nykl.jan.3693@gmail.com; vojta.kuchar.sps@gmail.com</p>
+    </div>
+  </div>
+  <div class="footerSpaces"></div>
+  <div class="footerContent">
+    <h2>Vytvořeno</h2>
+    <div>
+      <p>Autoři: Kristýna Petrlíková, Adam Pudil, Jan Nykl, Vojtěch Kuchař</p>
+      <p>Za podpory: VOŠ a SPŠ Jičín</p>
+      <p>V rámci: Hackathon open-data Královéhradeckého kraje 2020</p>
+    </div>
+  </div>
+  <div class="footerSpaces"></div>
+  <div class="footerContent">
+    <h2>Datové sady</h2>
+    <div>
+      <p>Zdroj nakažených: Ministerstvo zdravotnictví České republiky</p>
+      <p>Zdroj populace: Český statistický úřad</p>
+    </div>
+  </div>
+</div>

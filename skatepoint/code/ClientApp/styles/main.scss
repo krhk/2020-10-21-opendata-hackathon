@@ -1,0 +1,57 @@
+@import "variables/variables.scss";
+
+@import "mixins/mixins.scss";
+
+@import "components/buttons.scss";
+
+@import "components/input.scss";
+@import "components/text.scss";
+
+@import "layout/auth.scss";
+@import "layout/navigation.scss";
+@import "layout/footer.scss";
+@import "layout/landing.scss";
+@import "layout/documentation.scss";
+
+.main-wrapper{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.main-title{
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    padding: 48px 0 32px;
+    h2{
+        font-size: 28px;
+        font-weight: 500;
+    }
+}
+
+input:focus, textarea:focus, button:focus, select:focus{
+    outline: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+@media screen and (max-width: 1264px){
+    .main-wrapper{
+        width: auto;
+        margin: 0 32px;
+    }
+}
+@media screen and (max-width: $mobile-width){
+    .main-wrapper{
+        margin: 0 24px;
+    }
+    .main-title{
+        padding: 24px 0 24px;
+        h2{
+            font-size: 26px;
+        }
+    }
+}

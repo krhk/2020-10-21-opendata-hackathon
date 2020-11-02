@@ -1,0 +1,77 @@
+﻿@model CycloRoutes.Data.Review
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Editace</h1>
+
+    <h4>Recenze</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label asp-for="UserID" class="control-label"></label>
+            <input asp-for="UserID" class="form-control" />
+            <span asp-validation-for="UserID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Username" class="control-label"></label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TrailID" class="control-label"></label>
+            <input asp-for="TrailID" class="form-control" />
+            <span asp-validation-for="TrailID" class="text-danger"></span>
+        </div>*@
+
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rating" class="control-label"></label>
+                    <input asp-for="Rating" class="form-control" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                    <label asp-for="LikeCount" class="control-label"></label>
+                    <input asp-for="LikeCount" class="form-control" />
+                    <span asp-validation-for="LikeCount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DislikeCount" class="control-label"></label>
+                    <input asp-for="DislikeCount" class="form-control" />
+                    <span asp-validation-for="DislikeCount" class="text-danger"></span>
+                </div>*@
+                <div class="form-group">
+                    <input type="submit" value="Uložit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Zpátky na seznam</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+}
+else
+{
+    <h1>Přihlaš se!</h1>
+}

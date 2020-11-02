@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CycloRoutes.Data.Review>
+
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h1>Filtrování</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.LikeCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DislikeCount)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <a href="/Reviews/Details/@item.ID">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                </a>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.LikeCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DislikeCount)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @if (User.Identity.Name == item.Username)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ID">Editovat</a>
+
+                        <a asp-action="Delete" asp-route-id="@item.ID">Smazat</a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.ID">Detaily</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
