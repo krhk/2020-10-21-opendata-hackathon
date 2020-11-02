@@ -16,7 +16,7 @@ Pro načtení opendat do databáze jsou v "DataController.cs" připravené REST 
 
 **Screenshots**
 
-![](01.jpg)
-![](02.jpg)
-![](03.jpg)
-![](04.jpg)
+![](01.png)
+![](02.png)
+![](03.png)
+![](04.png)
